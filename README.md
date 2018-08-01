@@ -1,3 +1,3 @@
 # my_leetcode
 
-leetcode的联系
+leetcode的练习
