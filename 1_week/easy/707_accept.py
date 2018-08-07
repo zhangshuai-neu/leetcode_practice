@@ -1,12 +1,11 @@
-class MyLinkedList:
-    
+class MyLinkedList(object):
+
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        self.var =None
-        self.next = None
-        
+        self.val=None
+        self.next=None
 
     def get(self, index):
         """
@@ -14,10 +13,20 @@ class MyLinkedList:
         :type index: int
         :rtype: int
         """
-        temp = self
-        for i in range(index+1):
-            temp = temp -> next;
-           
+        if index<0:
+            return -1
+        
+        temp=self
+        while index>=0:
+            if temp==None:
+                return -1
+            temp=temp.next
+            index=index-1
+        
+        if temp==None:
+            return -1
+        
+        return temp.val
         
 
     def addAtHead(self, val):
@@ -26,7 +35,10 @@ class MyLinkedList:
         :type val: int
         :rtype: void
         """
-        
+        new = MyLinkedList()
+        new.val=val
+        new.next=self.next
+        self.next=new
 
     def addAtTail(self, val):
         """
@@ -34,6 +46,14 @@ class MyLinkedList:
         :type val: int
         :rtype: void
         """
+        new = MyLinkedList()
+        new.val=val
+        new.next=None
+        
+        temp=self
+        while temp.next!=None:
+            temp=temp.next
+        temp.next=new
         
 
     def addAtIndex(self, index, val):
@@ -43,14 +63,42 @@ class MyLinkedList:
         :type val: int
         :rtype: void
         """
+        if index<0:
+            return
         
+        temp=self
+        while index>=0:
+            if temp==None:
+                return
+            pre=temp
+            temp=temp.next
+            index=index-1
 
+        new=MyLinkedList()
+        new.val=val
+        pre.next=new
+        new.next=temp
+        
+        
     def deleteAtIndex(self, index):
         """
         Delete the index-th node in the linked list, if the index is valid.
         :type index: int
         :rtype: void
         """
+        if index<0:
+            return
+        
+        temp=self
+        while index>=0:
+            if temp==None:
+                return
+            pre=temp
+            temp=temp.next
+            index=index-1
+        
+        if temp!=None:
+            pre.next=temp.next
         
 
 
