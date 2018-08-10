@@ -10,9 +10,7 @@ class MyCalendarThree:
         :rtype: int
         节点存储：start,end,count以三元组的形式存放在book_list中
         """
-        
-        print(start, end)
-        
+       
         if self.book_segment_count==0:
             #book
             self.book_list.append(start)
@@ -25,8 +23,17 @@ class MyCalendarThree:
             new_start=start
             new_end=end
             new_index=0
-
-            while new_index < self.book_segment_count:
+            while new_index <= self.book_segment_count:
+				#添加到最末尾
+                if new_index == self.book_segment_count:
+                    print("debug_zs2")
+                    new_book_intersects=1
+                    self.book_list.insert(new_index*3,new_book_intersects)
+                    self.book_list.insert(new_index*3,new_end)
+                    self.book_list.insert(new_index*3,new_start)
+                    self.book_segment_count=self.book_segment_count+1
+                    break
+				
                 current_start=self.book_list[new_index*3+0]
                 current_end=self.book_list[new_index*3+1]
                 current_count=self.book_list[new_index*3+2]
@@ -71,7 +78,6 @@ class MyCalendarThree:
                     new_index=new_index+1
                     #剩余
                     new_start=current_end
-                    print("debug_zs0:",new_start,self.book_segment_count)
                     
                     continue
                 
@@ -138,26 +144,14 @@ class MyCalendarThree:
                             new_index=new_index+1
                         #后面,下一轮处理
                         new_start=current_end
-                        print("debug_zs1:",new_start)
     
                         continue
                     
                 #new_start在current_book右侧
                 if new_start>=current_end:
                     #交给下一轮处理
-                    print("debug_zs3\n")
                     new_index=new_index+1
-                    
-                    #本轮结束
-                    if new_index>=self.book_segment_count:
-                        print("debug_zs2\n")
-                        new_book_intersects=1
-                        self.book_list.insert(new_index*3,new_book_intersects)
-                        self.book_list.insert(new_index*3,new_end)
-                        self.book_list.insert(new_index*3,new_start)
-                        self.book_segment_count=self.book_segment_count+1
-                        break
-                        
+
         #最大intersects
         max_intersects=0
         i=0
@@ -165,17 +159,5 @@ class MyCalendarThree:
             if max_intersects<self.book_list[i*3+2]:
                 max_intersects=self.book_list[i*3+2]
             i=i+1
-        
-        print(self.book_list)
-        print(max_intersects)
-        
-        return max_intersects    
 
-# Your MyCalendarThree object will be instantiated and called as such:
-# obj = MyCalendarThree()
-# param_1 = obj.book(start,end)    
-
-MyCalendarThree=MyCalendarThree();
-list1=[[1,13],[59,71],[31,42],[2,21],[51,63],[79,89],[5,18],[83,100],[33,49],[77,94],[89,99],[19,31],[29,45],[18,35],[62,74],[35,51],[11,27],[95,100],[95,100],[71,87],[25,44],[51,62],[88,100],[53,67],[17,27],[95,100],[98,100],[26,42],[59,75],[24,36],[77,90],[50,64],[84,100],[46,63],[77,93],[35,47],[86,100],[84,100],[56,66],[3,18]];
-for i in range(len(list1)):
-    MyCalendarThree.book(list1[i][0],list1[i][1]); 
+        return max_intersects  
