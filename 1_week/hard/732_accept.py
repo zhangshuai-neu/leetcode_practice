@@ -11,6 +11,7 @@ class MyCalendarThree:
         节点存储：start,end,count以三元组的形式存放在book_list中
         """
         
+        print(start, end)
         
         if self.book_segment_count==0:
             #book
@@ -26,8 +27,6 @@ class MyCalendarThree:
             new_index=0
 
             while new_index < self.book_segment_count:
-                print(new_start, new_end)
-                
                 current_start=self.book_list[new_index*3+0]
                 current_end=self.book_list[new_index*3+1]
                 current_count=self.book_list[new_index*3+2]
@@ -72,6 +71,8 @@ class MyCalendarThree:
                     new_index=new_index+1
                     #剩余
                     new_start=current_end
+                    print("debug_zs0:",new_start,self.book_segment_count)
+                    
                     continue
                 
                 #new_start在current_book中间
@@ -137,14 +138,19 @@ class MyCalendarThree:
                             new_index=new_index+1
                         #后面,下一轮处理
                         new_start=current_end
+                        print("debug_zs1:",new_start)
+    
                         continue
                     
                 #new_start在current_book右侧
                 if new_start>=current_end:
                     #交给下一轮处理
+                    print("debug_zs3\n")
                     new_index=new_index+1
+                    
                     #本轮结束
                     if new_index>=self.book_segment_count:
+                        print("debug_zs2\n")
                         new_book_intersects=1
                         self.book_list.insert(new_index*3,new_book_intersects)
                         self.book_list.insert(new_index*3,new_end)
@@ -164,9 +170,7 @@ class MyCalendarThree:
         print(max_intersects)
         
         return max_intersects    
-        
-        
-        
+
 # Your MyCalendarThree object will be instantiated and called as such:
 # obj = MyCalendarThree()
 # param_1 = obj.book(start,end)    
