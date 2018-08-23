@@ -5,25 +5,18 @@ class Solution:
         :type amount: int
         :rtype: int
         """
-        #从比amount小的币值中选择最大的减去
-        #剩余的部分存放在left_count中
-        sort_coins=sorted(coins)
-        index = len(coins)-1    #索引记录
-        left_count = amount     #剩余部分
-        coins_count = 0         #记录coins的最少使用数
+        # 动态规划表达式,空间换时间
+        # dp[amount] = min(dp[amount],dp(amount-coins)+1)
+        int_max = amount+1
+        dp_list=[int_max for i in range(amount+1)]
         
-        #从尾开始，第一个比amount小的索引
-        while sort_coins[index] >amount:
-            index = index -1
-        
-        #
-        while index>=0:
-            if left_count==0:
-                return True
-            else:
-                
-        
-        return -1
-            
+        def dp(dp_list,)
         
         
+        
+        
+        return dp(amount,coins)
+        
+s = Solution()
+s.coinChange([1,3,5],9)
+s.coinChange([346,29,395,188,155,109],9401)
