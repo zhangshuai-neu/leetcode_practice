@@ -25,14 +25,12 @@ class Solution:
                         #记录所有可能
                         if next_count!=-1:
                             tail_count_list.append(next_count + i)
-                        i=i-1                        
-            
+                        i=i-1
             if len(tail_count_list)>0:
                 return min(tail_count_list)
             else:
                 return -1
-            
-                
+
         #比amount小的最大值的索引
         sorted_coins=sorted(coins)
         i = len(sorted_coins)-1
@@ -40,13 +38,13 @@ class Solution:
             i=i-1
         tail = i    
         
-
         #动态规划
         min_coins=dp(sorted_coins,tail,amount)
         print(min_coins)
         
         return min_coins
-        
+
+#例子
 s = Solution()
 s.coinChange([1,3,5],9)
 s.coinChange([346,29,395,188,155,109],9401)
