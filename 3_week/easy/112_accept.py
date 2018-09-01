@@ -12,6 +12,7 @@ class Solution:
         :type sum: int
         :rtype: bool
         """
+        #acce_sum 累加和
         def confirm_sum(root, acce_sum, sum):
             if root == None:
                 return False
