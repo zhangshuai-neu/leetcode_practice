@@ -4,9 +4,6 @@ class Solution:
         :type matrix: List[List[int]]
         :rtype: List[int]
         """
-<<<<<<< HEAD
-        
-=======
         #遍历一次
         def visit_one_time(matrix, start_r, start_c, end_r, end_c):
             ret_list = []
@@ -21,7 +18,7 @@ class Solution:
                     ret_list.append(matrix[r][start_c])
                     r = r+1
                 return ret_list
-            
+
             #上面一行
             while c <= end_c:
                 ret_list.append(matrix[r][c])
@@ -45,7 +42,7 @@ class Solution:
                 ret_list.append(matrix[r][c])
                 r = r-1
             return ret_list
-        
+
         all_list = []
         if len(matrix) ==0:
             return all_list
@@ -56,10 +53,9 @@ class Solution:
         for i in range(itr_end):
             one_time_list = visit_one_time(matrix, i, i, row_len-1-i, col_len-1-i)
             all_list.extend(one_time_list)
-        
+
         print(all_list)
         return all_list
 # test code
 # s = Solution()
 # s.spiralOrder([[1,2,3],[4,5,6],[7,8,9]])
->>>>>>> 10bcbb768160d7901bc1c748a2cd3640f49fca8e
