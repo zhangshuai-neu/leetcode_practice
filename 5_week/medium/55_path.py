@@ -5,9 +5,10 @@ class Solution:
         :rtype: int
         """
         # 使用贪心法来解决
+        # 只能给出一条合理路径，不能给出最少 jump 次数的路径，唯一的反例[2,3,1]
         # 每次走尽可能的远（局部最优）
-        # 总的 jump次数少（全局最优），有唯一一种反例[2,3,1]（因为list太短）
         # notice：只要能够到达的位置(reach)比last_index大即可
+
         print(nums)
 
         jump_count = 0
@@ -19,13 +20,6 @@ class Solution:
         current_index = 0
         print("current_index:",current_index)
         while current_index<last_index:
-            #去除反例 [2,3,1]，由于之后的list太短导致
-            if current_index<last_index and nums[current_index]+current_index>=last_index:
-                current_index = last_index
-                jump_count = jump_count+1
-                print("current_index:",current_index)
-                return jump_count
-
             iter_next_index = current_index + 1
             max_reach = iter_next_index + nums[iter_next_index]
             while iter_next_index<=last_index and iter_next_index <= current_index + nums[current_index]:
@@ -42,8 +36,8 @@ class Solution:
                 current_index = last_index
                 jump_count = jump_count+1
                 print("current_index:",current_index)
-        return jump_count
 
+        return jump_count
 #-------------------------------------
 # 测试代码
 #-------------------------------------
@@ -53,9 +47,6 @@ s.jump([1])
 # return 0
 
 s.jump([1,2])
-# return 1
-
-s.jump([2,3,1])
 # return 1
 
 s.jump([1,2,3])
