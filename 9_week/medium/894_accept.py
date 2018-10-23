@@ -11,24 +11,32 @@ class Solution(object):
         :type N: int
         :rtype: List[TreeNode]
         """
-        global_result_list = []
-        if N%2==0:
-            #不可能
-            return global_result_list
-
-        if N==1:
-            t=TreeNode(0)
-            global_result_list.append(t)
-            return global_result_list
+        # root类表提交后，leetcode结果使用层序遍历表示
+        # N只能是奇数
+        # 先生成树，然后生成层序便利list
+        # n记录是否生成完
         
-        # N>=3
-        # 逐步生成full binary tree，每次添加两个节点
-        # n当前节点数，N最大节点数
-        # 每次生成一个root，都要重新记录
-        def add_node_in_fbt(root,)
-        new_root=TreeNode(0)
+        def get_all_FBT(N):
+            tree_list=[]
+            if N%2==0:
+                return tree_list
+            if N==1:
+                tree_list.append(TreeNode(0))
+                return tree_list
 
-        
-            
+            n=N-1
+            i=1
+            while i<n:
+                l_tree_list = get_all_FBT(i)
+                r_tree_list = get_all_FBT(n-i)
+                for k in range(len(l_tree_list)):
+                    for j in range(len(r_tree_list)):
+                        new_root = TreeNode(0)
+                        new_root.left = l_tree_list[k]
+                        new_root.right = r_tree_list[j]
+                        tree_list.append(new_root)
+                i=i+2
+            return tree_list
 
-
+        fbt_st_list=get_all_FBT(N)
+        return fbt_st_list
