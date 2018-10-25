@@ -9,10 +9,9 @@ class Solution:
         # 3) 不包含三个连续相同字母
         # 如果不合法，给出最小的修改步骤
 
-        def takeSecond(elem):
-            return elem[1]
-
-
+        def takeThird(elem):
+            return elem[2]
+        
         flag1= False
         flag2= False
         flag3= True
@@ -50,12 +49,12 @@ class Solution:
                 while start+repeat_count<s_len and s[i]==s[start+repeat_count]:
                     repeat_count=repeat_count+1
                 if repeat_count>=3:
-                    repeat_list.append([start,repeat_count])
-                    repeat_can_delete_count = repeat_count-2
+                    repeat_list.append([start,repeat_count,repeat_count%3])
+                    repeat_can_delete_count = repeat_can_delete_count+repeat_count-2
                 max_replace_count = max_replace_count+repeat_count//3
 
                 i=i+repeat_count
-
+        repeat_list_len = len(repeat_list)
         if max_replace_count>0:
             flag3=False
 
@@ -111,8 +110,8 @@ class Solution:
                             del_count = 0
                             while(del_count<over_len):
                                 # 一遍遍的重复,将重复串变成3m+2的形式
-                                repeat_list.sort(key=takeSecond)
-                                for k in range(len(repeat_list)):
+                                repeat_list.sort(key=takeThird)
+                                for k in range(repeat_list_len):
                                     rs=repeat_list[k][0]
                                     rl=repeat_list[k][1]
                                     if rl<3:
@@ -131,23 +130,27 @@ class Solution:
                                     if del_count+minus_num>over_len:
                                         #不要过度减
                                         minus_num = over_len-del_count
+                                        
                                     s=s[0:rs]+s[rs+minus_num:]
                                     del_count=del_count+minus_num
                                     repeat_list[k][1]=repeat_list[k][1]-minus_num
-
+                                    repeat_list[k][2]=repeat_list[k][1]%3
+                                    #删除导致的位置移动
+                                    for bi in range(repeat_list_len):
+                                        if repeat_list[bi][0]>rs:
+                                            repeat_list[bi][0]=repeat_list[bi][0]-minus_num
                                     if del_count>=over_len:
                                         break
                         else:
                             # 如果不能delete到<=20, 说明如果一直删除重复，会消除异常3
                             # 转化成异常1
-
                             del_count = 0
                             pre_del_count = -1
                             while(pre_del_count<del_count): #无法再删除了
                                 # 一遍遍的重复,将重复串变成3m+2的形式
                                 pre_del_count=del_count
-                                repeat_list.sort(key=takeSecond)
-                                for k in range(len(repeat_list)):
+                                repeat_list.sort(key=takeThird)
+                                for k in range(repeat_list_len):
                                     rs=repeat_list[k][0]
                                     rl=repeat_list[k][1]
                                     if rl<3:
@@ -166,7 +169,11 @@ class Solution:
                                     s=s[0:rs]+s[rs+minus_num:]
                                     del_count=del_count+minus_num
                                     repeat_list[k][1]=repeat_list[k][1]-minus_num
-
+                                    repeat_list[k][2]=repeat_list[k][1]%3
+                                    #删除导致的位置移动
+                                    for bi in range(repeat_list_len):
+                                        if repeat_list[bi][0]>rs:
+                                            repeat_list[bi][0]=repeat_list[bi][0]-minus_num
                         op_count = del_count+self.strongPasswordChecker(s)
                         return op_count
 
@@ -212,8 +219,8 @@ class Solution:
                             del_count = 0
                             while(del_count<over_len):
                                 # 一遍遍的重复,将重复串变成3m+2的形式
-                                repeat_list.sort(key=takeSecond)
-                                for k in range(len(repeat_list)):
+                                repeat_list.sort(key=takeThird)
+                                for k in range(repeat_list_len):
                                     rs=repeat_list[k][0]
                                     rl=repeat_list[k][1]
                                     if rl<3:
@@ -235,6 +242,11 @@ class Solution:
                                     s=s[0:rs]+s[rs+minus_num:]
                                     del_count=del_count+minus_num
                                     repeat_list[k][1]=repeat_list[k][1]-minus_num
+                                    repeat_list[k][2]=repeat_list[k][1]%3
+                                    #删除导致的位置移动
+                                    for bi in range(repeat_list_len):
+                                        if repeat_list[bi][0]>rs:
+                                            repeat_list[bi][0]=repeat_list[bi][0]-minus_num
                                     if del_count>=over_len:
                                         break
                         else:
@@ -244,9 +256,9 @@ class Solution:
                             pre_del_count = -1
                             while(pre_del_count<del_count): #无法再删除了
                                 # 一遍遍的重复,将重复串变成3m+2的形式
-                                repeat_list.sort(key=takeSecond)
+                                repeat_list.sort(key=takeThird)
                                 pre_del_count=del_count
-                                for k in range(len(repeat_list)):
+                                for k in range(repeat_list_len):
                                     rs=repeat_list[k][0]
                                     rl=repeat_list[k][1]
                                     if rl<3:
@@ -268,6 +280,11 @@ class Solution:
                                     s=s[0:rs]+s[rs+minus_num:]
                                     del_count=del_count+minus_num
                                     repeat_list[k][1]=repeat_list[k][1]-minus_num
+                                    repeat_list[k][2]=repeat_list[k][1]%3
+                                    #删除导致的位置移动
+                                    for bi in range(repeat_list_len):
+                                        if repeat_list[bi][0]>rs:
+                                            repeat_list[bi][0]=repeat_list[bi][0]-minus_num
                                     
                         op_count = del_count+self.strongPasswordChecker(s)
                         return op_count
@@ -294,10 +311,17 @@ print(s.strongPasswordChecker("ababababababababaaaaa"))
 
 print(s.strongPasswordChecker("aaaabbaaabbaaa123456A"))
 #return 3
-'''
+
 
 print(s.strongPasswordChecker("aaaabaaaaaa123456789F"))
 #return 3
+
+print(s.strongPasswordChecker("aaaaaaaAAAAAA6666bbbbaaaaaaABBC"))
+#return 13
+'''
+
+print(s.strongPasswordChecker("aaaaaaaaaaaaaaaaaaaaa"))
+#return 
 
 
 
