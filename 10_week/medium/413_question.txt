@@ -1,4 +1,5 @@
 A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.
+两个相邻元素的差是相同的
 
 For example, these are arithmetic sequence:
 
