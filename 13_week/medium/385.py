@@ -49,9 +49,8 @@ class Solution:
         """
 
         # 用list表示栈，stack[0]为栈顶
-        stack = []
-        ret_ni = None
-        
+        stack = []  
+
         i=0
         j=0
         s_len = len(s)
@@ -69,12 +68,15 @@ class Solution:
                 else:
                     stack.insert(0, NestedInteger(num) )
                 i=j
+
+                if i>=s_len:
+                    # 处理 "123"这种特殊情况
+                    ret_ni = stack.pop(0)
                 continue
             
             if s[i] == '[':
                 # NestedInteger
-                new_ni = NestedInteger()
-                stack.insert(0,new_ni)
+                stack.insert(0, NestedInteger())
                 i=i+1
                 continue
                 
@@ -89,9 +91,7 @@ class Solution:
                     internal_ni = stack.pop(0)
                     if len(stack)!=0:
                         stack[0].add(internal_ni)
-                    else:
-                        ret_ni = internal_ni
+                    ret_ni = internal_ni
                 i=i+1
-                
-            return ret_ni
-
+            
+        return ret_ni
