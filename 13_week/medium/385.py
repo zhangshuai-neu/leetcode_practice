@@ -47,4 +47,51 @@ class Solution:
         :type s: str
         :rtype: NestedInteger
         """
+
+        # 用list表示栈，stack[0]为栈顶
+        stack = []
+        ret_ni = None
         
+        i=0
+        j=0
+        s_len = len(s)
+        
+        while i<s_len:
+            if s[i] == '-' or (s[i]<='9' and s[i]>='0'):
+                # 数字
+                j=i+1
+                while j<s_len and s[j]<='9' and s[j]>='0':
+                    j=j+1
+                    
+                num = int(s[i:j])
+                if len(stack) != 0:
+                    stack[0].add( NestedInteger(num) )
+                else:
+                    stack.insert(0, NestedInteger(num) )
+                i=j
+                continue
+            
+            if s[i] == '[':
+                # NestedInteger
+                new_ni = NestedInteger()
+                stack.insert(0,new_ni)
+                i=i+1
+                continue
+                
+            if s[i] == ',':
+                # 分隔符
+                i=i+1
+                continue
+                
+            if s[i] == ']':
+                # 结束符
+                if len(stack)!=0:
+                    internal_ni = stack.pop(0)
+                    if len(stack)!=0:
+                        stack[0].add(internal_ni)
+                    else:
+                        ret_ni = internal_ni
+                i=i+1
+                
+            return ret_ni
+
