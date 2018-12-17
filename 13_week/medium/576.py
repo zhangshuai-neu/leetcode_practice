@@ -17,6 +17,7 @@ class Solution:
         #                            
         # 创建存放的数组[time][i][j]
 
+        # 方法1：迭代形式
         # 特殊情况
         if N==0:
             return 0
@@ -135,6 +136,6 @@ s = Solution()
 #print(s.findPaths(2,3,8,1,0)) #return 1104
 #print(s.findPaths(3,2,5,1,1))  #return 109
 #print(s.findPaths(3,2,5,1,1))  #return 109
-print(s.findPaths(30,24,23,26,12))
+#print(s.findPaths(30,24,23,26,12))
 
 
