@@ -1,3 +1,5 @@
 # my_leetcode
 
-leetcode的练习
+leetcode's practice
+
+5 questions every week
