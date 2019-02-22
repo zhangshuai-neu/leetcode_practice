@@ -1,33 +1,37 @@
 class Solution:
-    def insert_sort(self, num_list):
+    def quick_sort(self, num_list, begin, end):
         """
         :type num_list: List[int]
-        :rtype: List[int]
         """
-        # 插入排序，适用于数据量比较少的情况
-        # 
-        # 从小到大
-        num_list_len = len(num_list)
+        # 快速排序
+        # 4 5 1 2 3 作为例子进行思考
+        if end-begin<1:
+            return
+            
+        print(num_list, begin, end)
+        partition = begin-1
+        for i in range(begin,end):
+            if num_list[i] < num_list[end]:
+                partition = partition+1
+                t = num_list[i]
+                num_list[i] = num_list[partition]
+                num_list[partition] = t
         
-        for i in range(1,num_list_len):
-            for j in range(0,i):
-                if num_list[i]<num_list[j]:
-                    temp_num = num_list[i]
-                    # 将[j，i)全体后移
-                    k=i-1
-                    while k>=j:
-                        num_list[k+1] = num_list[k]
-                        k=k-1
-                    num_list[j] = temp_num
-        return num_list
+        partition = partition+1
+        t = num_list[end]
+        num_list[end] = num_list[partition]
+        num_list[partition] = t
         
+        self.insert_sort(num_list, begin, partition-1)
+        self.insert_sort(num_list, partition+1, end)
 #==================
 # 测试
 #==================
 s = Solution()
 """
 in_list = [1,3,4,5,2]
-"""
 in_list = [100,3,4,5,200,1]
-
-print( s.insert_sort(in_list) )
+"""
+in_list = [1,3,4,5,2]
+s.quick_sort(in_list, 0, len(in_list)-1)
+print( in_list )
