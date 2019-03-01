@@ -27,7 +27,7 @@ class Solution:
                     k=k-1
                 num_list[index] = temp_val
         return num_list
-        
+
     def bucket_sort(self, num_list):
         """
         :type num_list: List[int]
@@ -51,13 +51,12 @@ class Solution:
             self.insert_sort( bucket_list[i] )
         
         # 读取结果
-        result_list = []
+        j = 0
         for i in range(bucket_num):
             for val in bucket_list[i]:
-                result_list.append(val+min_int)
+                num_list[j] = val+min_int
+                j = j+1
                 
-        return result_list
-
 #==================
 # 测试
 #==================
@@ -69,4 +68,5 @@ in_list = [1,3,4,5,2]
 """
 in_list = [1.1,3.2,4.5,1.2,2.2,2.3,4.7,5.6]
 max_num = max(in_list)
-print( s.bucket_sort(in_list) )
+s.bucket_sort(in_list)
+print( in_list )
