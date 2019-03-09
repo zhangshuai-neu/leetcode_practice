@@ -53,35 +53,77 @@ class SearchTreeNode:
         if self.right_num>0:
             self.right_num = self.right_num-1
         
-
+#=====================
+# 二叉搜索树
+#=====================
 class SearchTree:
     root = None
     
+    # 插入查找树节点
     def insert(self, st_node):
         if self.root = None:
-            root = st_node
+            self.root = st_node
         else:
             key = st_node.get_key()
-            temp_node = root
-            pre_temp_node = root
+            temp_node = self.root
+            pre_temp_node = self.root
             is_left = False
             while temp_node!=None:
                 if key<temp_node.get_key():
                     pre_temp_node = temp_node
                     temp_node = temp_node.get_left()
+                    
                     is_left = True
                 else:
                     pre_temp_node = temp_node
-                    temp_node = temp_node.get_left()
+                    temp_node = temp_node.get_right()
                     is_left = False
             if is_left:
                 pre_temp_node.set_left(st_node)
+                pre_temp_node.add_left_num()
             else:
                 pre_temp_node.set_right(st_node)
+                pre_temp_node.add_right_num()
+    
+    # 获得当前节点的后继节点
+    def get_min(self, root):
+        temp_node = root
+        while temp_node.get_left() != None:
+            temp_node = temp_node.get_left()
+        return temp_node
+    
+    # 删除key对应的节点
+    def remove(self, key):
+       temp_node = self.root
+       pre_temp_node = self.root
+       is_left = False
+       while temp_node!=None:
+            if key<temp_node.get_key():
+                pre_temp_node = temp_node
+                temp_node = temp_node.get_left()
+                is_left = True
+            else:
+                if key>temp_node.get_key():
+                    pre_temp_node = temp_node
+                    temp_node = temp_node.get_left()
+                    is_left = False
+                else:
+                    break
+        
+        if temp_node == None:
+            return None
             
-    def remove(self, st_node):
+        if is_left:
+            min_right = self.get_min(temp_node.get_right())
+            if min_right==None:
+                pre_temp_node.set_left(temp_node.get_left())
+            else:
+                
+        else:
+            
         
-        
+    
+    # 返回key对应的value
     def get(slef, key):
         temp_node = root
         while temp_node!=None:
