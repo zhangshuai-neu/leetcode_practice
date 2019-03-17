@@ -1,0 +1,82 @@
+进制转换：
+int("字符串",进制) 返回10进制数
+bin(数字) 返回0b开头的2进制字符串
+hex(数字) 返回0x开头的16进制字符串
+oct(数字) 返回0o开头的8进制字符串
+str(10进制数字) 返回10进制字符串
+
+字符列表合并成str:
+"".join(char_list)  
+
+长度：
+len(list)
+len(str)
+
+list操作:
+l1 = [] 创建list
+排序，getkey函数用来获取key,默认是第一个元素(此时不要指明key)
+False是从小到大，True是从大到小
+list.sort(key=getkey,reverse=False/True) 
+list.insert(index,val) 向index处插入val,原本的index后移
+list.extend(list1) 将list1追加list之后
+list.append(val) 在list末尾添加val
+list.pop(index=-1) 删除指定index，默认是最后一个
+list.reverse() 反向列表中元素
+
+词典操作:
+d1 = {key:val} 创建dict
+dict.items() 以列表返回可遍历的(键, 值) 元组数组
+dict.keys() 以列表返回一个字典所有的键
+dict.values() 以列表返回字典中的所有值
+dict.update(dict2) 添加，把字典dict2的键/值对更新到dict里
+pop(key[,default]) 删除，删除字典给定键 key 所对应的值
+dict[key] =new_val 修改，修改key对应的value
+
+集合：不包含重复元素
+s1 = set() 创建一个空集合必须用set()
+s1 = {1,2,3} 创建集合
+s.add(x) 添加元素
+s.update(list) 添加元素
+s.remove( x ) 移除元素，不存在发生错误
+s.discard( x ) 移除元素，不存在不报错
+s.clear() 清空集合
+x in s x在集合中
+set.intersection(set1, set2 ... etc) 返回交集
+set.union(set1, set2...) 返回并集
+set1.issubset(set2) s1是否为s2的子集
+set1.difference(set2) 返回差集， 包含在s1，但是不在s2中
+
+利用集合去除重复
+new_list = list ( set(list) )
+
+内置函数:
+abs(val) 绝对值
+max(list) list的最大值
+min(list) list的最小值
+sum(list) 求和
+ord(char) 返回值char的num
+chr(num) 返回num对应的char
+any() 函数用于判断给定的可迭代参数 iterable 是否全部为 False，则返回 False，如
+果有一个为 True，则返回 True。
+
+all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE，
+如果是返回 True，否则返回 False。
+
+map(func,迭代对象) 对迭代对象执行批量func，例如： list(map(int,["123","234"]))
+
+深复制：
+python3在函数参数中传递的对象是引用
+
+# 利用copy对象进行深赋值
+import copy
+new_obj = copy.copy(obj)
+
+牛客网格式：
+#定义全局变量，函数
+while True:
+    try：
+        #读取case并处理
+        #打印
+    except:
+        # 所有case结束后的处理
+        break

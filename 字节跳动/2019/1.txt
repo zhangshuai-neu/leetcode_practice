@@ -1,0 +1,11 @@
+                    if gl[i]==gl[(i+1)%n] and gl[i]==gl[(n+i-1)%n]:
+                        cl[i] = 1
+                        flag=True
+                    if gl[i]<gl[(i+1)%n] and gl[i]==gl[(n+i-1)%n]:
+                        cl[i] = 1
+                        flag=True
+                    if gl[i]==gl[(i+1)%n] and gl[i]<gl[(n+i-1)%n]:
+                        cl[i] = 1
+                        flag=True
+                    if gl[i]<gl[(i+1)%n] and gl[i]<gl[(n+i-1)%n]:
+                        cl[i] = 1
