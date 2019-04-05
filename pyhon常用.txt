@@ -71,6 +71,12 @@ python3在函数参数中传递的对象是引用
 import copy
 new_obj = copy.copy(obj)
 
+全排列：
+例子：
+import itertools
+result = list(itertools.permutations([1,2,3])) 
+# 返回[1,2,3]所有全排列，并放入list中
+
 牛客网格式：
 #定义全局变量，函数
 while True:
