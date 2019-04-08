@@ -47,7 +47,7 @@ Accoding to the Table-1, we find the *val equels to k. That means, we are very c
 
 **Notice:** number is binary, and '*' indicates uncertainty.
 
-## **3.Solution:**
+## **3. Solution:**
 
 **Direct Solution:** As show in Figure-1, from low to high, replace * in y with each bit of binary(k). If the binary(k) is too long, it is added directly to the head of y.
 
@@ -65,3 +65,35 @@ However, the process of getting y (like this form: \*0\*0) is  inconvenient. The
 - Space complexity: O(1)
 
     Notice: m = length(binary(x)) , n = length(binary(k)), and length() can return number of digits.
+
+## **4. Coding**
+
+This is a code example that uses string operations.
+But if you use bit operations, it will be more efficient.
+
+```python
+while True:
+try:
+    x,k = input().split()
+    x = int(x)
+    k = int(k)
+    # 分析bit，y中不能包含x的bit位
+    k_bin_l = list(bin(k)[2:])
+    x_bin_l = list(bin(x)[2:])
+    i = len(x_bin_l)-1
+    j = len(k_bin_l)-1
+    while i>=0:
+        if x_bin_l[i]=='0':
+            if j>=0:
+                x_bin_l[i]=k_bin_l[j]
+                j=j-1
+        i=i-1
+    l = j
+    while l>=0:
+        x_bin_l.insert(0,k_bin_l[l])
+        l=l-1
+    y = int("".join(x_bin_l),2)-x
+    print(y)
+except:
+    break
+```
