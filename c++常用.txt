@@ -4,6 +4,13 @@
 vector：
     (1)头文件#include<vector>.
     (2)创建vector对象，vector<int> vec;
+        vector<int> vec(7,3);　指定值初始化，vec被初始化为包含7个值为3的int
+        vector<int> vec(7); 包含7个元素，每个元素进行缺省的值初始化
+        vector<int> vec(vec1.begin()+2,vec1.end()-1); 
+            初始化为两个迭代器指定范围中元素的拷贝
+        vector<int> vec = {1,2,3.0,4,5,6,7}; 数组创建
+        vector<int> vec(vec1); 复制构造
+        
     (3)尾部操作：
         插入 vec.push_back(a);
         删除 vec.pop_back(); 
@@ -20,9 +27,10 @@ vector：
     (8)向量大小:vec.size();
     (9)清空:vec.clear();
     (10)判断vector是否为空: vec.empty();
-	(11)头尾元素
-		vec.front() //第一个元素
-		vec.back() //最后一个元素
-		
+    (11)头尾元素
+        vec.front() //第一个元素
+        vec.back() //最后一个元素
+    (12) = 操作
+    
 
 
