@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1554731109 source:f:\git_dir\leetcode_practice\程序员代码面试指南\1.栈和队列\1.设计一个带有getmin功能的栈\solution\main.cpp
+	<iostream>
+	<vector>
+	"stack_min.h"
+
+1554731380 f:\git_dir\leetcode_practice\程序员代码面试指南\1.栈和队列\1.设计一个带有getmin功能的栈\solution\stack_min.h
+	<vector>
+	<iostream>
+
+1554731396 source:f:\git_dir\leetcode_practice\程序员代码面试指南\1.栈和队列\1.设计一个带有getmin功能的栈\solution\stack_min.cpp
+	"stack_min.h"
+
