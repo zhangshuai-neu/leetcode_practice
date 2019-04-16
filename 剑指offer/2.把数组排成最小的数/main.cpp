@@ -32,7 +32,7 @@ public:
         return *i+sMid+*j < *j+sMid+*i;
     }
 
-    inline void vectorStringSwap(vector<string>::iterator i, vector<string>::iterator j){
+    void vectorStringSwap(vector<string>::iterator i, vector<string>::iterator j){
             string tempS = *i;
             *i = *j;
             *j = tempS;
@@ -44,7 +44,7 @@ public:
 
         /// 获取 partition 的位置
         vector<string>::iterator part = begin;
-        for(vector<string>::iterator i=begin; i!=end; i++){
+        for(vector<string>::iterator i=begin; i<=end; i++){
             if( lessThan(i,end) ){
                 vectorStringSwap(part,i);
                 part++;
@@ -59,6 +59,9 @@ public:
 
 
     string PrintMinNumber(vector<int> numbers) {
+        if(numbers.empty())
+            return "";
+
         // 将 numbers 转换成 vector<string>
         stringstream ss;
         vector<string> vs;
@@ -87,7 +90,7 @@ public:
 int main(){
     //测试代码
     Solution s;
-    vector<int> numbers = {3, 32, 321};
+    vector<int> numbers = {2, 1, 4, 3};
     string str = s.PrintMinNumber(numbers);
     cout<<str<<endl;
     
