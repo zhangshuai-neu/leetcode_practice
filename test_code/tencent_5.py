@@ -41,6 +41,9 @@ while True:
             #读取case并处理
             a, b = list(map(int,input().split()))
             result = process(a, b, k, all_result)
-            print(all_result)
+            
+            # 测试
+            for i in range(a,b+1):
+                print(all_result[i])
     except:
         break
