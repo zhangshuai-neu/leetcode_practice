@@ -1,10 +1,9 @@
-
-
 while True:
     try:
         case_num = int(input())
-        num_map = {}
         for j in range(case_num):
+            print("debug j")
+            num_map = {}
             #读取case并处理
             num_count = int(input())
             data = list(map(int,input().split()))
