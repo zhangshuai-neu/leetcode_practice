@@ -14,8 +14,8 @@ def process_1_length(l, k, all_result):
     K_num_range = math.ceil(l/k) 
     for i in range(l):
         for k_num in range(1, K_num_range):
-            left_l = i-0-1
-            right_l = l-i-k_num*k +1
+            left_l = i
+            right_l = l-i-k_num*k-1
             if right_l>=0 and left_l>=0:
                 result_sum = result_sum + process_1_length(left_l, k, all_result)
                 result_sum = result_sum + process_1_length(right_l, k, all_result)
