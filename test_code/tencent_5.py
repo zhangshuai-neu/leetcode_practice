@@ -19,7 +19,7 @@ def process_1_length(l, k, all_result):
             if right_l>0:
                 result_sum = result_sum + process_1_length(left_l, k, all_result)
                 result_sum = result_sum + process_1_length(right_l, k, all_result)
-    return -1
+    return result_sum
 
 # 处理所有范围
 def process(a, b, k, all_result):
