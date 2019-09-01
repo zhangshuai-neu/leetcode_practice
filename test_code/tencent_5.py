@@ -43,7 +43,8 @@ while True:
             result = process(a, b, k, all_result)
             
             # 测试
-            for i in range(a,b+1):
-                print(all_result[i])
+            # for i in range(a,b+1):
+            #    print(all_result[i])
+            print(result)
     except:
         break
