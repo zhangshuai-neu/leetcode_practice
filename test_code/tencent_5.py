@@ -23,11 +23,13 @@ def process_1_length(l, k, all_result):
 
 # 处理所有范围
 def process(a, b, k, all_result):
+    result = 0
     for l in range(a,b):
         l_result = process_1_length(l, k, all_result)
         all_result[l][0] = l_result
         all_result[l][1] = k
-    return 0
+        result = result + l_result
+    return result
 
 # [结果，k]
 all_result = [[-1,0] for i in range(100000+1)]
