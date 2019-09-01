@@ -4,7 +4,7 @@ while True:
     try:
         case_num = int(input())
         num_map = {}
-        for i in range(case_num):
+        for j in range(case_num):
             #读取case并处理
             num_count = int(input())
             data = list(map(int,input().split()))
