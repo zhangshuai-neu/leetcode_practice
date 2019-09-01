@@ -14,8 +14,8 @@ def process_1_length(l, k, all_result):
     K_num_range = math.ceil(l/k) 
     for i in range(l):
         for k_num in range(1, K_num_range):
-            left_l = i-0
-            right_l = l-i-k_num*k
+            left_l = i-0-1
+            right_l = l-i-k_num*k +1
             if right_l>0:
                 result_sum = result_sum + process_1_length(left_l, k, all_result)
                 result_sum = result_sum + process_1_length(right_l, k, all_result)
@@ -43,8 +43,8 @@ while True:
             result = process(a, b, k, all_result)
             
             # 测试
-            # for i in range(a,b+1):
-            #    print(all_result[i])
+            for i in range(a,b+1):
+                print(all_result[i])
             print(result)
     except:
         break
