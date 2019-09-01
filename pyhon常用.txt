@@ -80,7 +80,7 @@ result = list(itertools.permutations([1,2,3]))
 牛客网格式：
 #定义全局变量，函数
 while True:
-    try：
+    try:
         #读取case并处理
         #打印
     except:
