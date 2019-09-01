@@ -24,7 +24,7 @@ def process_1_length(l, k, all_result):
 # 处理所有范围
 def process(a, b, k, all_result):
     result = 0
-    for l in range(a,b):
+    for l in range(a,b+1):
         l_result = process_1_length(l, k, all_result)
         all_result[l][0] = l_result
         all_result[l][1] = k
