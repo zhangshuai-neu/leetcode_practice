@@ -12,11 +12,8 @@ while True:
                 else:
                     num_map.update({data[d]:1})
 
-            print(num_map)
-            num_list = num_map.values()
-            print(num_list)
+            num_list = list(num_map.values())
             num_list.sort()
-            print(num_list)
 
             result = "NO"
             left_sum = 0
