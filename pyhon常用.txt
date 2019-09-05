@@ -26,8 +26,8 @@ list.reverse() 反向列表中元素
 词典操作:
 d1 = {key:val} 创建dict
 dict.items() 以列表返回可遍历的(键, 值) 元组数组
-dict.keys() 以列表返回一个字典所有的键
-dict.values() 以列表返回字典中的所有值
+dict.keys() 以列表返回一个字典所有的键,外面需要加list()处理
+dict.values() 以列表返回字典中的所有值,外面需要加list()处理
 dict.update(dict2) 添加，把字典dict2的键/值对更新到dict里
 pop(key[,default]) 删除，删除字典给定键 key 所对应的值
 dict[key] =new_val 修改，修改key对应的value
