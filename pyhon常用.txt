@@ -17,7 +17,7 @@ l1 = [] 创建list
 排序，getkey函数用来获取key,默认是第一个元素(此时不要指明key)
 False是从小到大，True是从大到小
 list.sort(key=getkey,reverse=False/True) 
-list.insert(index,val) 向index处插入val,原本的index后移
+list.insert(val,index) 向index处插入val,原本的index后移
 list.extend(list1) 将list1追加list之后
 list.append(val) 在list末尾添加val
 list.pop(index=-1) 删除指定index，默认是最后一个
